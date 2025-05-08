@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}My Reports{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Các hạng mục cần báo cáo</h1>
+    {% if reports %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề cho báo cáo</th>
+                        <th>Tên hạng mục</th>
+                        <th>Tên file</th>
+                        <th>Thời gian</th>
+                        <th>Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                        <tr>
+                            <td>{{ report.title }}</td>
+                            <td>{{ report.job_content }}</td>
+                            <td>{{ report.filename }}</td>
+                            <td>{{ report.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                {% if report.has_file() %}
+                                    <a href="{{ url_for('static', filename='uploads/' + report.filename) }}" 
+                                        class="btn btn-sm btn-primary" download>Download</a>
+                                {% else %}
+                                    <span class="text-muted">Không có file đính kèm</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            You haven't uploaded any reports yet. 
+            <a href="{{ url_for('main.upload') }}" class="alert-link">Upload your first report</a>.
+        </div>
+    {% endif %}
+{% endblock %}

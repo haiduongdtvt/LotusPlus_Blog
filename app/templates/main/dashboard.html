@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Dashboard</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Welcome to the Report Upload System
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Upload your reports</h5>
+                    <p class="card-text">
+                        This system allows you to upload various report files for management and tracking.
+                        Click the button below to start uploading your reports.
+                    </p>
+                    <a href="{{ url_for('main.upload') }}" class="btn btn-primary">Upload Report</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Quick Actions
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{ url_for('main.upload') }}" class="text-decoration-none">Upload New Report</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ url_for('main.reports') }}" class="text-decoration-none">View My Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

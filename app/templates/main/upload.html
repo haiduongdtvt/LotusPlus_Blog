@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Hạng mục báo cáo{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Cập nhật các nội dung báo cáo</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.title.label(class="form-label") }}
+                    {{ form.title(class="form-control") }}
+                    {% for error in form.title.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.job_content.label(class="form-label") }}
+                    {{ form.job_content(class="form-select") }}
+                <div class="mb-3">
+                    {{ form.describe.label(class="form-label") }}
+                    {{ form.describe(class="form-control", rows=4) }}
+                </div>
+                <div class="mb-3">
+                    {{ form.result.label(class="form-label") }}
+                    {{ form.result(class="form-control", rows=4) }}
+                </div>
+                <div class="mb-3">
+                    {{ form.file.label(class="form-label") }}
+                    {{ form.file(class="form-control") }}
+                    <div class="form-text">Chọn tệp tin để tải lên</div>
+                    {% for error in form.file.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Upload Guidelines
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Max file size: 16MB</li>
+                        <li>Allowed file types: txt, pdf, png, jpg, jpeg, gif, xlsx, xls, doc, docx, csv</li>
+                        <li>Give your report a descriptive title</li>
+                        <li>Add any relevant details in the description</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
