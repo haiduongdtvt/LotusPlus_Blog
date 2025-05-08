@@ -25,7 +25,6 @@ COPY ..
 # Create uploads directory
 RUN mkdir -p /app/app/uploads && \
     chmod -R 777 /app/app/uploads \
-    flask run
 
 # Run application
-CMD ["gunicorn", '--bind', '0.0.0.0:5000', "run:app"]
+CMD ["gunicorn", '--bind', '0.0.0.0:5000', "run:run"]
